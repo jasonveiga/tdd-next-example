@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js + Test-driven-development example
 
-## Getting Started
+This is a small example project showing a bit of test-driven development for a
+React component. It was bootstrapped with TypeScript using the following
+command:
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+```
+npx create-next-app tdd-example --use-npm --ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In addition, some test code for Next.js pages was copied from
+[this example](https://github.com/vercel/next.js/tree/canary/examples/with-jest).
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+The directory structure uses the optional `src` directory at the root of the
+project. Under it are `pages` and `components` directories.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Getting Started
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clone this repo
+2. Install deps: `npm install`
+3. Launch dev server: `npm start dev`
+4. Navigate to
+   [http://localhost:3000/date-display-test](http://localhost:3000/date-display-test)
+5. (Optional) From the command-line, launch Jest in "watch" mode:
+   `npx jest --watch`. This will allow you to see the results change as you work
+   through test-driven development.
 
-## Learn More
+# Working Through the Example
 
-To learn more about Next.js, take a look at the following resources:
+There are three tags defined. Each tag can be checked out in order to see the
+effects on test results and the live development page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `skeleton`: This shows the notional `DateDisplay` component, which as the name
+  implies simply displays the date. At this point, it does nothing functional
+  and no test is yet defined. Only component properties are defined. There's
+  also the `date-display-test` showing how it renders. At this point the page
+  should be blank.
+- `failing`: At this point, we've defined at test that checks to see we're
+  rendering the default value (current date) as expected. Since `DateDisplay`
+  contains no implementation yet, this will fail.
+- `passing`: This implementation uses [date-fns](https://date-fns.org/) to
+  format the date and return the string
