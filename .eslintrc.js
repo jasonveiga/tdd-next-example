@@ -6,7 +6,10 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
   ],
-  plugins: ['prettier'],
+  env: {
+    'jest/globals': true,
+  },
+  plugins: ['prettier', 'testing-library', 'jest'],
   rules: {
     'react/function-component-definition': [
       'error',
@@ -19,6 +22,7 @@ module.exports = {
         unnamedComponents: ['function-expression', 'arrow-function'],
       },
     ],
+    'import/extensions': ['error', { ts: 'never', tsx: 'never' }],
     'react/jsx-filename-extension': [
       'error',
       {
@@ -35,4 +39,11 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    // Only uses Testing Library lint rules in test files
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
+  ],
 };
