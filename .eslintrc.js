@@ -5,11 +5,12 @@ module.exports = {
     'airbnb/hooks',
     'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   env: {
     'jest/globals': true,
   },
-  plugins: ['prettier', 'testing-library', 'jest'],
+  plugins: ['prettier', 'testing-library', 'jest', 'eslint-plugin-tsdoc'],
   rules: {
     'react/function-component-definition': [
       'error',
