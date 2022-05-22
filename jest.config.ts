@@ -7,6 +7,7 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig: Config.InitialOptions = {
+  globalSetup: '<rootDir>/jest-global-setup.js',
   preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   collectCoverage: true,
